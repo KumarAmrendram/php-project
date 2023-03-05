@@ -13,62 +13,82 @@ body {
 }
 
 section {
-    height: 100vh;
+  height: 100vh;
 }
 
-.banner{
-    background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,173,181,1) 100%);
+.banner {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 173, 181, 1) 100%
+  );
 }
+
+
 
 .banner-text {
   padding-top: 150px;
 }
 
 .banner-text h1 {
-  font-size: 3rem;
+  font-size: 70px;
 }
 
+@media (max-width: 600px) {
+  .banner-text {
+    padding: 50px 30px 10px;
+  }
 
-@media (max-width:600px){
-    .banner-text {
-        padding: 50px 30px 10px;
-    }
+  .info-section {
+    padding: 50px 30px 10px;
+  }
 
-    .info-section {
-        padding: 50px 30px 10px;
-
-    }
-
-    img {
-        width: 350px;
-    }
+  img {
+    width: 350px;
+  }
 }
 
 .info-section {
-    background: rgb(224,221,170);
-    background: linear-gradient(0deg, rgba(224,221,170,1) 0%, rgba(255,255,255,1) 100%);
+  background: rgb(224, 221, 170);
+  background: linear-gradient(
+    0deg,
+    rgba(224, 221, 170, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
 
-.info-img img{
-    width: 250px !important;
+.info-img img {
+  width: 250px !important;
 }
-
-
 
 .info-section button {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
-.info-section button.btn{
-    
-    border-radius: 25px;
-    box-shadow: 4px 4px 4px #000000;
+.info-section button.btn {
+  border-radius: 25px;
+}
+
+.button {
+  box-shadow: 4px 4px 4px #000000;
+  background: rgb(224, 221, 170);
+  background: linear-gradient(
+    0deg,
+    rgba(224, 221, 170, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.button:hover {
+  background: #0a0a23;
+  color: #fff;
+  transition: 1s ;
 
 }
 
 footer {
-    background-color: #000;
-    /* background: rgb(255,255,255); background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(32,50,57,1) 100%); */
+  background-color: #000;
+  /* background: rgb(255,255,255); background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(32,50,57,1) 100%); */
   bottom: 0;
 }

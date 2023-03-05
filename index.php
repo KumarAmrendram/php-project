@@ -38,7 +38,20 @@
   </section>
 
 
-  <section class="info-section">
+  <section class="info-section text-center">
+    <h1 class="mb-5">your friends are here, you shouldn't you?</h1>
+    <div class="container-fluid d-flex row justify-content-evenly text-center">
+      <div class="col info-img mt-4">
+        <img src="./public/earth-483978_1280.webp" />
+      </div>
+      <div class="align-items-center col mt-5">
+        <p>A public platform building
+          <br />the definitive collection of coding questions & answers
+        </p>
+      <button class="btn button">Get Started</button>
+
+      </div>
+    </div>
   </section>
 
 
