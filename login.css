@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
 
 :root {
 	--clr-primary: #F6F5F7;
-	--clr-secondary: #FF4B2B;
+	--clr-secondary: rgba(0, 173, 181, 1);
 	--clr-background: #DDD;
 	--clr-white: #FFF;
 }
@@ -18,7 +17,7 @@ html {
 }
 
 body {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'ubuntu', sans-serif;
 	background: var(--clr-primary);
 	display: flex;
 	flex-direction: column;
@@ -153,7 +152,7 @@ button.ghost {
 .overlay {
 	/*For legacy browsers */
 	background-color: var(--clr-secondary);
-	background: linear-gradient(to right, #FF4B2B, #FF416C) no-repeat 0 0 / cover;
+	background: linear-gradient(to right, rgba(0, 173, 181, 1), #f4b0b0) no-repeat 0 0 / cover;
 	color: var(--clr-white);
 	position: relative;
 	top: -100%;
