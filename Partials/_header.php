@@ -10,16 +10,16 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/php-project/login.php">Login</a>
+        <a class="nav-link" href="login.php">Login</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="#">About Us</a>
+      <a class="nav-link" href="about.php">About Us</a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="#">Contribute</a>
+    <a class="nav-link" href="https://github.com/KumarAmrendram/php-project">Contribute</a>
   </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
