@@ -89,6 +89,12 @@ section {
 
 }
 
+/* threads */
+.user-img img{
+  width: 50px !important;
+}
+
+
 footer {
   background-color: #000;
   /* background: rgb(255,255,255); background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(32,50,57,1) 100%); */
