@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="style.css">
 
 
-  <title>Ask Shivaji</title>
+  <title>Ask Shivaji(Lata)</title>
 </head>
 
 <body>
