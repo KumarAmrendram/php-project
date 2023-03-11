@@ -31,8 +31,8 @@
         $catname = $row['catregory_name'];
         $catdesc = $row['category_description'];
     }
-    ?>
 
+    ?>
 
     <div class="container">
         <div class="jumbotron">
@@ -58,23 +58,29 @@
         $id = $_GET['catid'];
         $sql = "SELECT * from `threads` WHERE thread_id = $id";
         $result = mysqli_query($conn, $sql);
+        $noResult = true;
         while ($row = mysqli_fetch_assoc($result)) {
+            $noResult = false;
             $tid = $row['thread_id'];
             $title = $row['thread_title'];
             $desc = $row['thread_desc'];
 
-
-        echo '<div class="media my-3 ms-3">
+            echo '<div class="media my-3 ms-3">
                 <div class="user-img">
                     <div class="user-img">
                         <img src="img/user.png" alt="...">
                     </div>
                 </div>
                 <div class="media-body">
-                    <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid=' . $id. '" >' ."$title" .'</a></h5>
-                    <p>'. "$desc" . '</p>
+                    <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid=' . $id . '" >' . "$title" . '</a></h5>
+                    <p>' . "$desc" . '</p>
                 </div>
         </div>';
+        }
+
+
+        if ($noResult) {
+            echo "<div class='display-6'>Be the first person to ask</div><br/>";
         }
         ?>
     </div>
