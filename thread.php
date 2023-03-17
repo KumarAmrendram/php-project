@@ -19,7 +19,7 @@
     <title>Ask Shivaji</title>
 </head>
 
-<body>
+<body class="section">
     <?php include "Partials/_header.php" ?>
     <?php include 'Partials/_dbconnect.php' ?>
     <?php
@@ -42,9 +42,6 @@
             </p>
             <hr class="my-4">
         </div>
-
-
-        <!-- Questions -->
     </div>
 
     <div class="container">
