@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/favicon-icon" href="/public/favicon.ico">
@@ -48,7 +47,22 @@
             </p>
         </div>
     </div>
-
+    <!-- form backend -->
+    <?php
+    $method = $_SERVER['REQUEST_METHOD'];
+    $showAlert = false;
+    if ($method == 'POST') {
+        //insert data into db
+        $th_title = $_POST['title'];
+        $th_desc = $_POST['desc'];
+        $sql = "INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_use_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp())";
+        $showAlert = true;
+        if ($showAlert and $th_title != NULL) {
+            $result = mysqli_query($conn, $sql);
+            echo '<div class="alert alert-success container" role="alert">Success! Your question has been added. Please wait for community for to respond</div>';
+        }
+    }
+    ?>
 
 
     <!-- question form -->
@@ -70,12 +84,12 @@
         <hr class="my-4">
         <?php
         $id = $_GET['catid'];
-        $sql = "SELECT * from `threads` WHERE thread_id = $id"; //fetching thread data from db
+        $sql = "SELECT * from `threads` WHERE thread_cat_id = $id"; //fetching thread data from db
         $result = mysqli_query($conn, $sql);
         $noResult = true;
         while ($row = mysqli_fetch_assoc($result)) {
             $noResult = false;
-            $tid = $row['thread_id'];
+            $tid = $row['thread_cat_id'];
             $title = $row['thread_title'];
             $desc = $row['thread_desc'];
 
@@ -110,8 +124,7 @@
 
     <?php include "Partials/_footer.php" ?>
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
 </body>
