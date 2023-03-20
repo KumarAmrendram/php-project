@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/favicon-icon" href="/public/favicon.ico">
@@ -89,21 +90,20 @@
         $noResult = true;
         while ($row = mysqli_fetch_assoc($result)) {
             $noResult = false;
-            $tid = $row['thread_cat_id'];
+            $tid = $row['thread_id'];
             $title = $row['thread_title'];
             $desc = $row['thread_desc'];
 
-            echo '<div class="media my-3 ms-3">
-                <div class="user-img">
-                    <div class="user-img">
-                        <img src="img/user.png" alt="...">
-                    </div>
-                </div>
-                <div class="media-body">
-                    <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid=' . $tid . '" >' . "$title" . '</a></h5>
-                    <p>' . "$desc" . '</p>
-                </div>
+            echo '<div class="media my-4">
+            <div class="user-img d-flex align-items-center">
+            <img class="me-3" src="img/user.png">
+            <div class="media-body">
+            <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid=' . $tid . '" >' . $title . '</a></h5>
+              ' . $desc . '</div>
+            </div>
             </div>';
+            header("Location:../index.php");
+            echo $tid;
         }
 
 
@@ -124,7 +124,8 @@
 
     <?php include "Partials/_footer.php" ?>
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
 </body>

@@ -54,50 +54,49 @@
     $showAlert = false;
     if ($method == 'POST') {
         //insert data into db
-        $comment = $_POST['comment'];
-        $sql = "INSERT INTO `comments` (`comment_content`, `thread_id`, `comment_time`, `comment_by`) VALUES ('$comment', '$id', current_timestamp(), '0')";
+        $cmnt_content = $_POST['comment'];
+        $sql = "INSERT INTO `comments` (`comment_content`, `thread_id`, `comment_time`, `comment_by`) VALUES ('$cmnt_content', '$id', current_timestamp(), 0);";
         $showAlert = true;
-        if ($showAlert and $th_title != NULL) {
+        if ($showAlert and $cmnt_content != NULL) {
             $result = mysqli_query($conn, $sql);
-            echo '<div class="alert alert-success container" role="alert">Success! Your comment has been added. Please wait for community for to respond</div>';
+            echo '<div class="alert alert-success container" role="alert">Success! Your comment has been added.</div>';
+            $cmnt_content = NULL;
         }
     }
     ?>
 
-    <!-- comments form -->
-    <form class="container" action="<?php $_SERVER['REQUEST_URI'] ?>" method="post">
-        <div class="mb-3">
-            <label for="title" class="form-label h5">Post a Comment</label>
-            <div id="emailHelp" class="form-text text-white"></div>
-        </div>
-        <div class="form-group">
-            <textarea class="form-control" placeholder="" id="comment" name="comment" rows="4"></textarea>
-            <label for="floatingTextarea">Type your Comment</label>
-        </div>
-        <button type="submit" class="btn mt-3 button-primary">Post</button>
-    </form>
+    <div class="container">
+        <!-- comments form -->
+        <form action="<?php $_SERVER['REQUEST_URI'] ?>" method="post">
+            <div class="mb-3">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="" id="comment" name="comment" rows="4"></textarea>
+                <label for="floatingTextarea">Type your Comment</label>
+            </div>
+            <button type="submit" class="btn mt-3 button-primary">Post</button>
+        </form>
 
-    <!-- Comments -->
-    <?php
-    $id = $_GET['threadid'];
-    $sql = "SELECT * from `comments` WHERE thread_id = $id"; //fetching thread data from db
-    $result = mysqli_query($conn, $sql);
-    $noResult = true;
-    while ($row = mysqli_fetch_assoc($result)) {
-        $noResult = false;
-        $desc = $row['comment_content'];
 
-        echo '<div class="media my-3 ms-3 container">
-                    <div class="user-img">
-                        <div class="user-img">
-                            <img src="img/user.png" alt="...">
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <h5 class="mt-0">' . "$desc" . '</h5>
-                    </div>
-                </div>';
-    } ?>
+        <!-- Comments -->
+        <?php
+        $id = $_GET['threadid'];
+        $sql = "SELECT * from `comments` WHERE thread_id = $id"; //fetching thread data from db
+        $result = mysqli_query($conn, $sql);
+        $noResult = true;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $noResult = false;
+            $desc = $row['comment_content'];
+            echo '<div class="media my-4">
+        <div class="user-img d-flex align-items-center">
+        <img class="me-3" src="img/user.png">
+        <div class="media-body">
+        <h5 class="mt-0">Anonymous User</h5>
+          ' . $desc . '</div>
+        </div>
+        </div>';
+        } ?>
+    </div>
 
 
 
