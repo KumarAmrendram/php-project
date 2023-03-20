@@ -11,12 +11,14 @@ body {
   font-family: "Ubuntu", sans-serif;
   background-color: #fff;
   background-color: rgba(0, 173, 181, 1);
-	background: linear-gradient(to right, rgba(0, 173, 181, 1), #f4b0b0) no-repeat 0 0 / cover;
+  background: linear-gradient(to right, rgba(0, 173, 181, 1), #f4b0b0) no-repeat
+    0 0 / cover;
+  min-height: 100vh;
 }
 
-section {
-  /* height: 80vh;   */
-}
+/* .section {
+  min-height: 0vh;  
+} */
 /* 
 .banner {
   background: rgb(255, 255, 255);
@@ -26,8 +28,6 @@ section {
     rgba(0, 173, 181, 1) 100%
   );
 } */
-
-
 
 .banner-text {
   padding-top: 150px;
@@ -82,21 +82,31 @@ section {
   );
 }
 
+.button-primary {
+  /* background-color: #fff; */
+  background-color: #f4b0b0;
+  /* background: linear-gradient(to right, rgba(0, 173, 181, 1), #f4b0b0) no-repeat
+    0 0 / cover !important; */
+}
+
 .button:hover {
   background: #0a0a23;
   color: #fff;
-  transition: 1s ;
-
+  transition: 1s;
 }
 
 /* threads */
-.user-img img{
+.user-img img {
   width: 50px !important;
 }
 
-
-footer {
-  background-color: #000;
-  /* background: rgb(255,255,255); background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(32,50,57,1) 100%); */
-  bottom: 0;
+.footer {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+}
+footer,
+.push {
+  height: 142px; /* .push must be the same height as .footer */
 }
