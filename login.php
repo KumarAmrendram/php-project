@@ -16,6 +16,7 @@
 <body>
 
   <?php 
+  require('db_connect.php');
   require_once('vendor/autoload.php');
   $clientID = "880414152965-f2kn5op2rvpgk609qfqk7qe44i9lf014.apps.googleusercontent.com";
   $clientSecret = "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";
@@ -30,6 +31,17 @@
   $client->addScope('email');
   
   if(isset($_GET['code'])){
+    $token= $client->fetchAccessTokenWithAssertion($_GET['code']);
+    $client->setAccessToken($token['access_token']);
+
+    // getting profile info
+    $google_oauth= new Google_Service_Oauth2($client);
+    $google_account_info= $google_oauth->userinfo->get();
+
+
+    // showing profile info
+    echo"<pre>";
+    var_dump($google_account_info);
   
   
   }
