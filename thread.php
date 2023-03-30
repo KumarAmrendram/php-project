@@ -81,17 +81,21 @@
         <!-- Comments -->
         <?php
         $id = $_GET['threadid'];
-        $sql = "SELECT * from `comments` WHERE thread_id = $id"; //fetching thread data from db
+        $sql = "SELECT * FROM `comments` WHERE thread_id = $id"; //fetching thread data from db
         $result = mysqli_query($conn, $sql);
         $noResult = true;
+        echo $comment_time;
+        
         while ($row = mysqli_fetch_assoc($result)) {
             $noResult = false;
             $desc = $row['comment_content'];
+            $cmt_time = $row['comment_time'];
+            
             echo '<div class="media my-4">
         <div class="user-img d-flex align-items-center">
         <img class="me-3" src="img/user.png">
         <div class="media-body">
-        <h5 class="mt-0">Anonymous User</h5>
+        <h5 class="mt-0">Anonymous User at '. $cmt_time .'</h5>
           ' . $desc . '</div>
         </div>
         </div>';

@@ -15,38 +15,43 @@
 
 <body>
 
-  <?php 
-  require('db_connect.php');
-  require_once('vendor/autoload.php');
+  <?php
+  require('./Partials/_dbconnect.php');
+  require_once('./vendor/autoload.php');
   $clientID = "880414152965-f2kn5op2rvpgk609qfqk7qe44i9lf014.apps.googleusercontent.com";
   $clientSecret = "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";
-  $redirectUri = "http://localhost/php-project/demo.php";
-  
-  // creating client request to google
+  $redirectUri = "http://localhost/php-project/login.php";
+
+
+  // Creating new google client instance
   $client = new Google_Client();
+
+  // Vaibhav's Client ID
   $client->setClientID($clientID);
+
+  // vaibhav's Client Secrect
   $client->setClientSecret($clientSecret);
+
+  //Redirect URL
   $client->setRedirectUri($redirectUri);
+  
+  // Adding those scopes which we want to get (email & profile Information)
   $client->addScope('profile');
   $client->addScope('email');
-  
-  if(isset($_GET['code'])){
-    $token= $client->fetchAccessTokenWithAssertion($_GET['code']);
+
+  if (isset($_GET['code'])) {
+    $token = $client->fetchAccessTokenWithAssertion($_GET['code']);
     $client->setAccessToken($token['access_token']);
 
     // getting profile info
-    $google_oauth= new Google_Service_Oauth2($client);
-    $google_account_info= $google_oauth->userinfo->get();
+    $google_oauth = new Google\Service\Oauth2($client);
+    $google_account_info = $google_oauth->userinfo->get();
 
 
     // showing profile info
-    echo"<pre>";
+    echo "<pre>";
     var_dump($google_account_info);
-  
-  
-  }
-  
-  else{
+  } else {
 
     echo ' <div class="container" id="container">
     <!-- Form Sign Up -->
@@ -54,7 +59,7 @@
       <form action="#">
         <h1>Create Account</h1>
         <div class="social-container">
-          <a href="'.$client->createAuthUrl().'" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a href="' . $client->createAuthUrl() . '" class="social"><i class="fab fa-google-plus-g"></i></a>
         </div>
         <span>or use your email for registration</span>
         <input type="text" placeholder="Name" />
@@ -69,7 +74,7 @@
       <form action="#">
         <h1>Sign in</h1>
         <div class="social-container">
-          <a  href="'.$client->createAuthUrl().'" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a  href="' . $client->createAuthUrl() . '" class="social"><i class="fab fa-google-plus-g"></i></a>
         </div>
         <span>or use your account</span>
         <input type="email" placeholder="Email" />
@@ -100,7 +105,7 @@
     </div>
   </div>';
   }
-  
+
   ?>
 
   <script>
@@ -118,7 +123,8 @@
   </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
 
 </body>
 

@@ -1,3 +1,22 @@
+<?php
+include 'Partials/_dbconnect.php';
+if (!isset($_SESSION['login_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$id = $_SESSION['login_id'];
+
+$get_user = mysqli_query($db_connection, "SELECT * FROM `users` WHERE `google_id`='$id'");
+
+if (mysqli_num_rows($get_user) > 0) {
+    $user = mysqli_fetch_assoc($get_user);
+} else {
+    header('Location: logout.php');
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,12 +38,10 @@
 </head>
 
 <body>
-
     <section class="banner">
         <!-- Navbar -->
         <?php include 'Partials/_header.php' ?>
         <!-- Connecting to the database -->
-        <?php include 'Partials/_dbconnect.php' ?>
 
         <!-- slider starts here -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
