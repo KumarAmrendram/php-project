@@ -34,18 +34,46 @@
 
   //Redirect URL
   $client->setRedirectUri($redirectUri);
-  
+
   // Adding those scopes which we want to get (email & profile Information)
   $client->addScope('profile');
   $client->addScope('email');
 
   if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAssertion($_GET['code']);
-    $client->setAccessToken($token['access_token']);
 
-    // getting profile info
-    $google_oauth = new Google\Service\Oauth2($client);
-    $google_account_info = $google_oauth->userinfo->get();
+    if (!isset($token["Error"])) {
+      $client->setAccessToken($token['access_token']);
+
+      // getting profile info
+      $google_oauth = new Google\Service\Oauth2($client);
+      $google_account_info = $google_oauth->userinfo->get();
+
+      // Storing data into database
+      $id = mysqli_real_escape_string($conn, $google_account_info->id);
+      $full_name = mysqli_real_escape_string($conn, trim($google_account_info->name));
+      $email = mysqli_real_escape_string($conn, $google_account_info->email);
+      $profile_pic = mysqli_real_escape_string($conn, $google_account_info->picture);
+
+      // checking user already exists or not
+      $get_user = mysqli_query($conn, "SELECT `google_id` FROM `users` WHERE `google_id`='$id'");
+      if (mysqli_num_rows($get_user) > 0) {
+
+        $_SESSION['login_id'] = $id;
+        header('Location: test.php');
+        exit;
+      }
+    } else {
+      $insert = mysqli_query($db_connection, "INSERT INTO `users`(`google_id`,`name`,`email`,`profile_image`) VALUES('$id','$full_name','$email','$profile_pic')");
+      if ($insert) {
+        $_SESSION['login_id'] = $id;
+        header('Location: test.php');
+        exit;
+      } else {
+        echo "Sign up failed!(Something went wrong).";
+      }
+    }
+
 
 
     // showing profile info
@@ -53,7 +81,7 @@
     var_dump($google_account_info);
   } else {
 
-    echo ' <div class="container" id="container">
+    echo '<div class="container" id="container">
     <!-- Form Sign Up -->
     <div class="form-container sign-up-container">
       <form action="#">
