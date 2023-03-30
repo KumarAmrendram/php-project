@@ -33,7 +33,6 @@
         $catname = $row['catregory_name'];
         $catdesc = $row['category_description'];
     }
-
     ?>
 
     <div class="container">
@@ -48,6 +47,8 @@
             </p>
         </div>
     </div>
+
+    
     <!-- form backend -->
     <?php
     $method = $_SERVER['REQUEST_METHOD'];
