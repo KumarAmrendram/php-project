@@ -22,10 +22,10 @@
 
     <section class="banner">
         <!-- Navbar -->
-        <?php include 'Partials/_header.php' ;
-        
-include 'Partials/_dbconnect.php';
-?>
+        <?php include 'Partials/_header.php';
+
+        include 'Partials/_dbconnect.php';
+        ?>
         <!-- Connecting to the database -->
 
         <!-- slider starts here -->
