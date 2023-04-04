@@ -1,22 +1,3 @@
-<?php
-include 'Partials/_dbconnect.php';
-if (!isset($_SESSION['login_id'])) {
-    header('Location: login.php');
-    exit;
-}
-
-$id = $_SESSION['login_id'];
-
-$get_user = mysqli_query($db_connection, "SELECT * FROM `users` WHERE `google_id`='$id'");
-
-if (mysqli_num_rows($get_user) > 0) {
-    $user = mysqli_fetch_assoc($get_user);
-} else {
-    header('Location: logout.php');
-    exit;
-}
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -34,13 +15,15 @@ if (mysqli_num_rows($get_user) > 0) {
     <link rel="stylesheet" href="style.css">
 
 
-    <title>Ask Shivaji</title>
+    <title>Community Room </title>
 </head>
 
 <body>
     <section class="banner">
         <!-- Navbar -->
-        <?php include 'Partials/_header.php' ?>
+        <?php include 'Partials/_header.php'; 
+            include 'Partials/_dbconnect.php';
+        ?>
         <!-- Connecting to the database -->
 
         <!-- slider starts here -->

@@ -15,15 +15,14 @@
     <link rel="stylesheet" href="style.css">
 
 
-    <title>Ask Shivaji</title>
+    <title>Community Room </title>
 </head>
 
 <body>
-
     <section class="banner">
         <!-- Navbar -->
-        <?php include 'Partials/_header.php';
-        include 'Partials/_dbconnect.php';
+        <?php include 'Partials/_header.php'; 
+            include 'Partials/_dbconnect.php';
         ?>
         <!-- Connecting to the database -->
 
