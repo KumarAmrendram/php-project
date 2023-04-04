@@ -13,20 +13,21 @@
         <input type="checkbox" id="chk" aria-hidden="true">
 
         <div class="signup">
-            <form>
+            <form action="/php-project/Partials/_handleSignup.php" method="POST">
                 <label for="chk" aria-hidden="true">Sign up</label>
-                <input type="text" name="txt" placeholder="User name" required="">
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="pswd" placeholder="Password" required="">
+                <input type="text" placeholder="Full Name" name="SignupName" required="">
+                <input type="email" placeholder="Email" name="SignupEmail" required="">
+                <input type="password" placeholder="Password" name="SignupPassword" required="">
+                <input type="password" placeholder="Confirm Password" name="CPassword" required="">
                 <button>Sign up</button>
-            </form>
+            </form>x
         </div>
 
         <div class="login">
             <form>
                 <label for="chk" aria-hidden="true">Login</label>
                 <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="pswd" placeholder="Password" required="">
+                <input type="password" name="password" placeholder="Password" required="">
                 <button>Login</button>
             </form>
         </div>
