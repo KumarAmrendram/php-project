@@ -16,7 +16,7 @@
 
 
 
-    <title>Ask Shivaji</title>
+    <title>Community Room</title>
 </head>
 
 <body>
@@ -104,7 +104,6 @@
             </div>
             </div>';
             header("Location:../index.php");
-            echo $tid;
         }
 
 
