@@ -9,29 +9,16 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="/php-project">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link" href="about.php">About Us</a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link" href="https://github.com/KumarAmrendram/php-project">Contribute</a>
-  </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Categories
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#">C++</a></li>
-          <li><a class="dropdown-item" href="#">Data Science</a></li>
-          <li><a class="dropdown-item" href="#">Others</a></li>
-          <li><hr class="dropdown-divider"></li>
-
-        </ul>
-      </li>
-    </ul>
+      </li>';
+if($_SESSION['loggedin'] && $_SESSION['loggedin']==true){
+  echo '<p class="h5">welcome' . $_SESSION['username'] .'</p>';
+} else {
+  echo '<li class="nav-item">
+  <a class="nav-link" href="login.php">Login</a>
+</li>';
+}
+  
+    echo '</ul>
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Ask a Question" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
@@ -41,4 +28,10 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark">
 </nav>';
 
 
+// include('_handleSignup.php');
+if($_GET['signupsuccess'] && $_GET['signupsuccess'] == 'true'){
+  echo '<div class="alert alert-success h1" role="alert">
+  signup successful
+</div>';
+}
 ?>
