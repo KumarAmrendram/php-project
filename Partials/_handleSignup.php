@@ -9,12 +9,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //a genuine post request
             $user_email = $_POST['SignupEmail'];
             $pass = $_POST['SignupPassword'];
             $cPass = $_POST['CPassword'];
-
-            
+    
         // check if email already in use
         $sql = "SELECT * FROM `users` WHERE user_email= '$user_email'";
+
         $result = mysqli_query($conn, $sql);
         $rows = mysqli_num_rows($result);   
+        
         if($rows > 0){
                 echo "email already in use";
         } else {
