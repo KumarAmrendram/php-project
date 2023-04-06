@@ -1,4 +1,5 @@
 <?php 
+session_start();
 echo '<nav class="navbar navbar-expand-lg navbar-dark">
 <div class="container-fluid">
   <a class="navbar-brand" href="#">ASQ</a>
@@ -10,13 +11,14 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="/php-project">Home</a>
       </li>';
-if($_SESSION['loggedin'] && $_SESSION['loggedin']==true){
-  echo '<p class="h5">welcome' . $_SESSION['username'] .'</p>';
-} else {
-  echo '<li class="nav-item">
-  <a class="nav-link" href="login.php">Login</a>
-</li>';
-}
+      if($_SESSION['loggedin'] && $_SESSION['loggedin']==true){
+        echo '<li class="nav-item">
+        <p class="nav-link"> Welcome '.$_SESSION['username'].'</p></li>
+        <a href="/php-project/Partials/_logout.php" class="nav-item"><button class="btn btn-outline-success" type="submit">logout</button></a>';
+      } else {
+        echo '<li class="nav-item">
+        <a class="nav-link" href="login.php">Login</a></li>';
+      }
   
     echo '</ul>
     <form class="d-flex">
@@ -29,9 +31,11 @@ if($_SESSION['loggedin'] && $_SESSION['loggedin']==true){
 
 
 // include('_handleSignup.php');
+
 if($_GET['signupsuccess'] && $_GET['signupsuccess'] == 'true'){
   echo '<div class="alert alert-success h1" role="alert">
   signup successful
 </div>';
 }
+
 ?>
