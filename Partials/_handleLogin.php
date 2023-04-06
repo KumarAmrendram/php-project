@@ -9,12 +9,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //a genuine post request
             $pass = $_POST['loginPassword'];
 
             
-        // check if email already in use
         $sql = "SELECT * FROM `users` WHERE user_email= '$email'";
         $result = mysqli_query($conn, $sql);
         $Vrows = mysqli_num_rows($result);
-        if($Vrows == 0){
-                $rows = mysqli_fetch_assoc($result);   
+        $rows = mysqli_fetch_assoc($result);   
+        if($Vrows == 1){
                 if($rows['user_password'] == $pass){
                     session_start();
                     $_SESSION['loggedin'] = true;
@@ -28,3 +27,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ //a genuine post request
         }
 
 }
+
+?>
