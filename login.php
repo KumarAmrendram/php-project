@@ -24,7 +24,7 @@
         </div>
 
         <div class="login">
-            <form action="/php-project/Partials/_handleLogin.php" method="POST>
+            <form action="/php-project/Partials/_handleLogin.php" method="POST">
                 <label for="chk" aria-hidden="true">Login</label>
                 <input type="email" name="loginEmail" placeholder="Email" required="">
                 <input type="password" name="loginPassword" placeholder="Password" required="">
